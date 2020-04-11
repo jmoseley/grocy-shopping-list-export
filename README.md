@@ -5,12 +5,10 @@ A chrome extension to export a grocy shopping list
 
 Assumes you have node installed (`nvm use`).
 
-### 1. Install swagger-codegen
-
-[Guide here](https://github.com/swagger-api/swagger-codegen#table-of-contents)
+### 1. Install deps
 
 ```
-brew install swagger-codegen
+yarn
 ```
 
 ### 1. Generate the client

@@ -1,8 +1,10 @@
 #!/bin/bash
+set -x
 
 OPEN_API_SCHEMA_ADDRESS=${OPEN_API_SCHEMA_ADDRESS:="https://demo.grocy.info/api/openapi/specification"}
 
-swagger-codegen generate \
+openapi-generator generate \
   -i $OPEN_API_SCHEMA_ADDRESS \
-  -l typescript-angular \
-  -o src/client
+  -g typescript-node \
+  -o ./src/client \
+  --skip-validate-spec
