@@ -1,10 +1,17 @@
 #!/bin/bash
-set -x
-
-OPEN_API_SCHEMA_ADDRESS=${OPEN_API_SCHEMA_ADDRESS:="https://demo.grocy.info/api/openapi/specification"}
+set -xe
 
 openapi-generator generate \
-  -i $OPEN_API_SCHEMA_ADDRESS \
+  -i ./grocy_api.json \
   -g typescript-node \
-  -o ./src/client \
+  -o ./src/grocyClient \
   --skip-validate-spec
+
+# Fix typings for node upgrade
+sed -i 's/http.ClientResponse/http.IncomingMessage/g' src/grocyClient/**/*.ts
+
+# Fix a problematic line
+sed -i '/..\/model\/product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry/d' src/grocyClient/**/*.ts
+
+# Fix formatting
+prettier --write src/grocyClient/**/*.ts

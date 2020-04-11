@@ -11,12 +11,6 @@ Assumes you have node installed (`nvm use`).
 yarn
 ```
 
-### 1. Generate the client
-
-```
-yarn generate-client
-```
-
 ### 1. Compile
 
 ```
