@@ -8,6 +8,8 @@ Assumes you have node installed (`nvm use`).
 ### 1. Install deps
 
 ```
+pip install gkeepapi
+pip install keyring
 yarn
 ```
 
