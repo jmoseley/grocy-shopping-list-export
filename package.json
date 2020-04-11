@@ -4,7 +4,7 @@
   "description": "Chrome Extension to export a grocy shopping list",
   "main": " ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate-client": "./generate_client.sh"
   },
   "repository": {
     "type": "git",
