@@ -2,5 +2,5 @@ node_modules
 config.json
 tsconfig.tsbuildinfo
 src/**/*.js
-src/googleKeepApi/python
-!src/googleKeepApi/python/*.py
+*.pyc
+__pycache__
