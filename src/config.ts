@@ -6,6 +6,8 @@ let cachedConfig: Config;
 
 export interface Config {
     grocyApiKey: string;
+    googleUsername: string;
+    googlePassword: string;
 }
 
 export function getConfig(): Config {
@@ -25,8 +27,17 @@ export function getConfig(): Config {
         throw new Error(`Config missing "grocy_api_key".`);
     }
 
+    if (!parsedConfig['google_username']) {
+        throw new Error(`Config missing "google_username".`);
+    }
+    if (!parsedConfig['google_password']) {
+        throw new Error(`Config missing "google_password".`);
+    }
+
     cachedConfig = {
-        grocyApiKey: parsedConfig['grocy_api_key'] as string
+        grocyApiKey: parsedConfig['grocy_api_key'] as string,
+        googleUsername: parsedConfig['google_username'] as string,
+        googlePassword: parsedConfig['google_password'] as string
     }
 
     return cachedConfig;

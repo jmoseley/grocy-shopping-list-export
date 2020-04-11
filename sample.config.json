@@ -1,4 +1,5 @@
 {
-    "grocy_api_url": "https://grocy.lan",
-    "grocy_api_key": "myAwesomeApiKey"
+    "grocy_api_key": "myAwesomeApiKey",
+    "google_username": "me@gmail.com",
+    "google_password": "password123"
 }
