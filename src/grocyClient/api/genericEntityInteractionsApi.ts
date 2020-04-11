@@ -24,6 +24,7 @@ import { Location } from "../model/location";
 import { Product } from "../model/product";
 import { QuantityUnit } from "../model/quantityUnit";
 import { ShoppingListItem } from "../model/shoppingListItem";
+import { ShoppingList } from "../model/shoppingList";
 import { StockEntry } from "../model/stockEntry";
 
 import {
@@ -132,6 +133,7 @@ export class GenericEntityInteractionsApi {
       | QuantityUnit
       | ShoppingListItem
       | StockEntry
+      | ShoppingList
     >;
   }> {
     const localVarPath =
@@ -349,13 +351,13 @@ export class GenericEntityInteractionsApi {
   ): Promise<{
     response: http.IncomingMessage;
     body:
-      | Product
-      | Chore
-      | Battery
-      | Location
-      | QuantityUnit
-      | ShoppingListItem
-      | StockEntry;
+    | Product
+    | Chore
+    | Battery
+    | Location
+    | QuantityUnit
+    | ShoppingListItem
+    | StockEntry;
   }> {
     const localVarPath =
       this.basePath +
@@ -431,13 +433,13 @@ export class GenericEntityInteractionsApi {
       return new Promise<{
         response: http.IncomingMessage;
         body:
-          | Product
-          | Chore
-          | Battery
-          | Location
-          | QuantityUnit
-          | ShoppingListItem
-          | StockEntry;
+        | Product
+        | Chore
+        | Battery
+        | Location
+        | QuantityUnit
+        | ShoppingListItem
+        | StockEntry;
       }>((resolve, reject) => {
         localVarRequest(localVarRequestOptions, (error, response, body) => {
           if (error) {
@@ -478,7 +480,8 @@ export class GenericEntityInteractionsApi {
       | Location
       | QuantityUnit
       | ShoppingListItem
-      | StockEntry,
+      | StockEntry
+      | ShoppingList,
     options: { headers: { [name: string]: string } } = { headers: {} }
   ): Promise<{ response: http.IncomingMessage; body?: any }> {
     const localVarPath =
@@ -517,9 +520,9 @@ export class GenericEntityInteractionsApi {
     // verify required parameter 'productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry' is not null or undefined
     if (
       productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry ===
-        null ||
+      null ||
       productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry ===
-        undefined
+      undefined
     ) {
       throw new Error(
         "Required parameter productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry was null or undefined when calling objectsEntityObjectIdPut."
@@ -604,7 +607,8 @@ export class GenericEntityInteractionsApi {
       | Location
       | QuantityUnit
       | ShoppingListItem
-      | StockEntry,
+      | StockEntry
+      | ShoppingList,
     options: { headers: { [name: string]: string } } = { headers: {} }
   ): Promise<{ response: http.IncomingMessage; body: InlineResponse2001 }> {
     const localVarPath =
@@ -637,9 +641,9 @@ export class GenericEntityInteractionsApi {
     // verify required parameter 'productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry' is not null or undefined
     if (
       productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry ===
-        null ||
+      null ||
       productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry ===
-        undefined
+      undefined
     ) {
       throw new Error(
         "Required parameter productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry was null or undefined when calling objectsEntityPost."
@@ -731,6 +735,7 @@ export class GenericEntityInteractionsApi {
       | QuantityUnit
       | ShoppingListItem
       | StockEntry
+      | ShoppingList
     >;
   }> {
     const localVarPath =

@@ -46,6 +46,7 @@ export * from "./productPriceHistory";
 export * from "./quantityUnit";
 export * from "./recipeFulfillmentResponse";
 export * from "./session";
+export * from './shoppingList';
 export * from "./shoppingListItem";
 export * from "./stockEntry";
 export * from "./stockLocation";
@@ -106,6 +107,7 @@ import { ProductPriceHistory } from "./productPriceHistory";
 import { QuantityUnit } from "./quantityUnit";
 import { RecipeFulfillmentResponse } from "./recipeFulfillmentResponse";
 import { Session } from "./session";
+import { ShoppingList } from "./shoppingList";
 import { ShoppingListItem } from "./shoppingListItem";
 import { StockEntry } from "./stockEntry";
 import { StockLocation } from "./stockLocation";
@@ -183,6 +185,7 @@ let typeMap: { [index: string]: any } = {
   QuantityUnit: QuantityUnit,
   RecipeFulfillmentResponse: RecipeFulfillmentResponse,
   Session: Session,
+  ShoppingList: ShoppingList,
   ShoppingListItem: ShoppingListItem,
   StockEntry: StockEntry,
   StockLocation: StockLocation,
@@ -351,7 +354,7 @@ export class HttpBearerAuth implements Authentication {
 export class ApiKeyAuth implements Authentication {
   public apiKey: string = "";
 
-  constructor(private location: string, private paramName: string) {}
+  constructor(private location: string, private paramName: string) { }
 
   applyToRequest(requestOptions: localVarRequest.Options): void {
     if (this.location == "query") {
