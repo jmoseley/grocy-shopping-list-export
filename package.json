@@ -5,7 +5,8 @@
   "main": " ",
   "scripts": {
     "generate-client": "./generate_client.sh",
-    "compile": "tsc"
+    "compile": "tsc",
+    "do": "yarn compile && node src/index.js"
   },
   "repository": {
     "type": "git",

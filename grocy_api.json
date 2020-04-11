@@ -4,7 +4,7 @@
     "title": "grocy REST API",
     "description": "Authentication is done via API keys (header *GROCY-API-KEY* or same named query parameter), which you can manage [here](https://demo.grocy.info/manageapikeys).<br>Additionally requests from within the frontend are also valid (via session cookie).",
     "version": "2.6.2",
-    "license": { "name": "grocy.info", "url": "http://grocy.info" }
+    "license": { "name": "grocy.info", "url": "http://grocy.info/api" }
   },
   "servers": [{ "url": "http://grocy.lan/api" }],
   "tags": [
