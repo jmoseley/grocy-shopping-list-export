@@ -2,7 +2,7 @@ import shell from 'shelljs'
 
 export async function executeCommand<T = any>(script: string, ...params: string[]): Promise<T> {
     return new Promise((resolve, reject) => {
-        shell.exec(`${script} ${params.map(p => `"${p}"`).join(' ')}`, (code, stdout, _stderr) => {
+        shell.exec(`${script} ${params.map(p => `"${p}"`).join(' ')}`, { silent: true }, (code, stdout, _stderr) => {
             if (code != 0) {
                 reject(new Error(`Script exited with code ${code}.`));
             } else {

@@ -71,7 +71,8 @@ async function main() {
             return `${product.name} (${sli.amount} ${qu ? sli.amount! > 1 ? qu!.namePlural : qu!.name : ''})`.trim();
         }))).filter(item => !!item) as string[];
 
-        await googleKeep.addItems(noteId!, items);
+        const result = await googleKeep.addItems(noteId!, items);
+        console.info(`Added ${result.itemsAdded} items to the list.`);
     } catch (error) {
         console.error(`Error!`, error);
     }

@@ -15,4 +15,4 @@ for item in sys.argv[4:]:
 
 keep.sync()
 
-print(JSON.dumps({ "items_added": count }))
+print(json.dumps({ "items_added": count }))

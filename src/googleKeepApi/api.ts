@@ -15,8 +15,10 @@ export class GoogleKeepApi {
         return await executeCommand<NoteSearchResult[]>(this.getScriptPath('findNote'), this.username, this.password, label);
     }
 
-    public async addItems(noteId: string, items: string[]) {
-        await executeCommand(this.getScriptPath('addItems'), this.username, this.password, noteId, ...items);
+    public async addItems(noteId: string, items: string[]): Promise<{ itemsAdded: number }> {
+        const result = await executeCommand<{ items_added: number }>(this.getScriptPath('addItems'), this.username, this.password, noteId, ...items);
+
+        return { itemsAdded: result.items_added }
     }
 
     // private async login() {
