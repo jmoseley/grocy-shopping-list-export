@@ -1,6 +1,6 @@
 import { getConfig } from "./config";
 import { GenericEntityInteractionsApi, GenericEntityInteractionsApiApiKeys } from "./grocyClient/api/apis";
-import { ExposedEntityButNoListing, ShoppingList } from "./grocyClient/api";
+import { ExposedEntityButNoListing, ShoppingList, ShoppingListItem, QuantityUnit, Product } from "./grocyClient/api";
 import { GoogleKeepApi } from "./googleKeepApi/api";
 import inquirer from 'inquirer';
 
@@ -13,6 +13,7 @@ async function main() {
         const exposedEntityClient = new GenericEntityInteractionsApi();
         exposedEntityClient.setApiKey(GenericEntityInteractionsApiApiKeys.ApiKeyAuth, config.grocyApiKey);
 
+        const qus = (await exposedEntityClient.objectsEntityGet(ExposedEntityButNoListing.QuantityUnits)).body as QuantityUnit[];
         const shoppingLists = (await exposedEntityClient.objectsEntityGet(ExposedEntityButNoListing.ShoppingLists)).body as ShoppingList[];
         if (shoppingLists.length === 0) {
             throw new Error('No shopping list found.');
@@ -58,7 +59,19 @@ async function main() {
             }
         }
 
-        console.log('ids', shoppingListId, noteId);
+        const allShoppingListItems = ((await exposedEntityClient.objectsEntityGet(ExposedEntityButNoListing.ShoppingListItems)).body as ShoppingListItem[]);
+        const shoppingListItems = allShoppingListItems.filter(sli => sli.shoppingListId = shoppingListId);
+
+        const items = (await Promise.all(shoppingListItems.map(async sli => {
+            if (!sli.productId) {
+                return null;
+            }
+            const product = (await exposedEntityClient.objectsEntityObjectIdGet(ExposedEntityButNoListing.Products, sli.productId)).body as Product;
+            const qu = qus.find(qu => qu.id === product.quIdPurchase);
+            return `${product.name} (${sli.amount} ${qu ? sli.amount! > 1 ? qu!.namePlural : qu!.name : ''})`.trim();
+        }))).filter(item => !!item) as string[];
+
+        await googleKeep.addItems(noteId!, items);
     } catch (error) {
         console.error(`Error!`, error);
     }
