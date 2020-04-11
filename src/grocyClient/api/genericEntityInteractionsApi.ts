@@ -210,7 +210,7 @@ export class GenericEntityInteractionsApi {
           | Location
           | QuantityUnit
           | ShoppingListItem
-          | StockEntry
+          | StockEntry | ShoppingList
         >;
       }>((resolve, reject) => {
         localVarRequest(localVarRequestOptions, (error, response, body) => {
@@ -219,7 +219,7 @@ export class GenericEntityInteractionsApi {
           } else {
             body = ObjectSerializer.deserialize(
               body,
-              "Array<Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry>"
+              "Array<Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry | ShoppingList>"
             );
             if (
               response.statusCode &&
@@ -439,7 +439,7 @@ export class GenericEntityInteractionsApi {
         | Location
         | QuantityUnit
         | ShoppingListItem
-        | StockEntry;
+        | StockEntry | ShoppingList;
       }>((resolve, reject) => {
         localVarRequest(localVarRequestOptions, (error, response, body) => {
           if (error) {
@@ -447,7 +447,7 @@ export class GenericEntityInteractionsApi {
           } else {
             body = ObjectSerializer.deserialize(
               body,
-              "Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry"
+              "Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry | ShoppingList"
             );
             if (
               response.statusCode &&
@@ -542,7 +542,7 @@ export class GenericEntityInteractionsApi {
       json: true,
       body: ObjectSerializer.serialize(
         productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry,
-        "Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry"
+        "Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry | ShoppingList"
       )
     };
 
@@ -663,7 +663,7 @@ export class GenericEntityInteractionsApi {
       json: true,
       body: ObjectSerializer.serialize(
         productChoreBatteryLocationQuantityUnitShoppingListItemStockEntry,
-        "Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry"
+        "Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry | ShoppingList"
       )
     };
 
@@ -821,7 +821,7 @@ export class GenericEntityInteractionsApi {
           | Location
           | QuantityUnit
           | ShoppingListItem
-          | StockEntry
+          | StockEntry | ShoppingList
         >;
       }>((resolve, reject) => {
         localVarRequest(localVarRequestOptions, (error, response, body) => {
@@ -830,7 +830,7 @@ export class GenericEntityInteractionsApi {
           } else {
             body = ObjectSerializer.deserialize(
               body,
-              "Array<Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry>"
+              "Array<Product | Chore | Battery | Location | QuantityUnit | ShoppingListItem | StockEntry | ShoppingList>"
             );
             if (
               response.statusCode &&

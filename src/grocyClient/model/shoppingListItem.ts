@@ -21,6 +21,7 @@ export class ShoppingListItem {
    */
   "amount"?: number;
   "rowCreatedTimestamp"?: Date;
+  "shoppingListId"?: string;
 
   static discriminator: string | undefined = undefined;
 
@@ -29,32 +30,42 @@ export class ShoppingListItem {
     baseName: string;
     type: string;
   }> = [
-    {
-      name: "id",
-      baseName: "id",
-      type: "number"
-    },
-    {
-      name: "productId",
-      baseName: "product_id",
-      type: "number"
-    },
-    {
-      name: "note",
-      baseName: "note",
-      type: "string"
-    },
-    {
-      name: "amount",
-      baseName: "amount",
-      type: "number"
-    },
-    {
-      name: "rowCreatedTimestamp",
-      baseName: "row_created_timestamp",
-      type: "Date"
-    }
-  ];
+      {
+        name: "id",
+        baseName: "id",
+        type: "number"
+      },
+      {
+        name: "productId",
+        baseName: "product_id",
+        type: "number"
+      },
+      {
+        name: "note",
+        baseName: "note",
+        type: "string"
+      },
+      {
+        name: "amount",
+        baseName: "amount",
+        type: "number"
+      },
+      {
+        name: "done",
+        baseName: "done",
+        type: "number"
+      },
+      {
+        name: "shoppingListId",
+        baseName: "shopping_list_id",
+        type: "number"
+      },
+      {
+        name: "rowCreatedTimestamp",
+        baseName: "row_created_timestamp",
+        type: "Date"
+      }
+    ];
 
   static getAttributeTypeMap() {
     return ShoppingListItem.attributeTypeMap;

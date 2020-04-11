@@ -19,7 +19,7 @@ export enum ExposedEntity {
   Locations = <any>"locations",
   QuantityUnits = <any>"quantity_units",
   QuantityUnitConversions = <any>"quantity_unit_conversions",
-  ShoppingList = <any>"shopping_list",
+  ShoppingListItems = <any>"shopping_list",
   ShoppingLists = <any>"shopping_lists",
   Recipes = <any>"recipes",
   RecipesPos = <any>"recipes_pos",

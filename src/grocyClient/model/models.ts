@@ -294,6 +294,49 @@ export class ObjectSerializer {
       return transformedData;
     } else if (type === "Date") {
       return new Date(data);
+    } else if (type.indexOf('|') !== -1) {
+      // Sort types with least number of keys first, to increase the liklihood of finding the correct type.
+      const candidateTypes = type.split('|').map(t => t.trim()).sort((a, b) => {
+        const aAttributes = typeMap[a].getAttributeTypeMap() as any[];
+        const bAttributes = typeMap[b].getAttributeTypeMap() as any[];
+
+        return aAttributes.length - bAttributes.length
+      });
+      const dataKeys = Object.keys(data);
+      let matchingType: string | undefined = undefined;
+      for (const candidateType of candidateTypes) {
+        if (!typeMap[candidateType]) {
+          // Unknown type
+          continue;
+        }
+        const typeKeys = (typeMap[candidateType].getAttributeTypeMap() as { baseName: string }[]).map((attribute) => attribute.baseName);
+        let keysMatch = true;
+        for (const dataKey of dataKeys) {
+          if (!typeKeys.includes(dataKey)) {
+            keysMatch = false;
+            break;
+          }
+        }
+        if (keysMatch) {
+          matchingType = candidateType;
+          break;
+        }
+      }
+
+      if (!matchingType) {
+        // don't know the type
+        return data;
+      }
+      let instance = new typeMap[matchingType]();
+      let attributeTypes = typeMap[matchingType].getAttributeTypeMap();
+      for (let index in attributeTypes) {
+        let attributeType = attributeTypes[index];
+        instance[attributeType.name] = ObjectSerializer.deserialize(
+          data[attributeType.baseName],
+          attributeType.type
+        );
+      }
+      return instance;
     } else {
       if (enumsMap[type]) {
         // is Enum

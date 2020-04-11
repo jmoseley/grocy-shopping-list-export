@@ -34,6 +34,11 @@ export class Product {
   "pictureFileName"?: string;
   "allowPartialUnitsInStock"?: boolean;
   "rowCreatedTimestamp"?: Date;
+  parentProductId?: number;
+  calories?: number;
+  cumulateMinStockAmountOfSubProducts?: boolean;
+  defaultBestBeforeDaysAfterFreezing?: number;
+  defaultBestBeforeDaysAfterThawing?: number;
 
   static discriminator: string | undefined = undefined;
 
@@ -42,97 +47,122 @@ export class Product {
     baseName: string;
     type: string;
   }> = [
-    {
-      name: "id",
-      baseName: "id",
-      type: "number"
-    },
-    {
-      name: "name",
-      baseName: "name",
-      type: "string"
-    },
-    {
-      name: "description",
-      baseName: "description",
-      type: "string"
-    },
-    {
-      name: "locationId",
-      baseName: "location_id",
-      type: "number"
-    },
-    {
-      name: "quIdPurchase",
-      baseName: "qu_id_purchase",
-      type: "number"
-    },
-    {
-      name: "quIdStock",
-      baseName: "qu_id_stock",
-      type: "number"
-    },
-    {
-      name: "enableTareWeightHandling",
-      baseName: "enable_tare_weight_handling",
-      type: "number"
-    },
-    {
-      name: "notCheckStockFulfillmentForRecipes",
-      baseName: "not_check_stock_fulfillment_for_recipes",
-      type: "number"
-    },
-    {
-      name: "productGroupId",
-      baseName: "product_group_id",
-      type: "number"
-    },
-    {
-      name: "quFactorPurchaseToStock",
-      baseName: "qu_factor_purchase_to_stock",
-      type: "number"
-    },
-    {
-      name: "tareWeight",
-      baseName: "tare_weight",
-      type: "number"
-    },
-    {
-      name: "barcode",
-      baseName: "barcode",
-      type: "string"
-    },
-    {
-      name: "minStockAmount",
-      baseName: "min_stock_amount",
-      type: "number"
-    },
-    {
-      name: "defaultBestBeforeDays",
-      baseName: "default_best_before_days",
-      type: "number"
-    },
-    {
-      name: "defaultBestBeforeDaysAfterOpen",
-      baseName: "default_best_before_days_after_open",
-      type: "number"
-    },
-    {
-      name: "pictureFileName",
-      baseName: "picture_file_name",
-      type: "string"
-    },
-    {
-      name: "allowPartialUnitsInStock",
-      baseName: "allow_partial_units_in_stock",
-      type: "boolean"
-    },
-    {
-      name: "rowCreatedTimestamp",
-      baseName: "row_created_timestamp",
-      type: "Date"
-    }
-  ];
+      {
+        name: "id",
+        baseName: "id",
+        type: "number"
+      },
+      {
+        name: "parentProductId",
+        baseName: "parent_product_id",
+        type: "number"
+      },
+      {
+        name: "defaultBestBeforeDaysAfterThawing",
+        baseName: "default_best_before_days_after_thawing",
+        type: "number"
+      },
+      {
+        name: 'defaultBestBeforeDaysAfterFreezing',
+        baseName: 'default_best_before_days_after_freezing',
+        type: 'number',
+      },
+      {
+        name: 'cumulateMinStockAmountOfSubProducts',
+        baseName: 'cumulate_min_stock_amount_of_sub_products',
+        type: 'boolean',
+      },
+      {
+        name: "calories",
+        baseName: "calories",
+        type: "number"
+      },
+      {
+        name: "name",
+        baseName: "name",
+        type: "string"
+      },
+      {
+        name: "description",
+        baseName: "description",
+        type: "string"
+      },
+      {
+        name: "locationId",
+        baseName: "location_id",
+        type: "number"
+      },
+      {
+        name: "quIdPurchase",
+        baseName: "qu_id_purchase",
+        type: "number"
+      },
+      {
+        name: "quIdStock",
+        baseName: "qu_id_stock",
+        type: "number"
+      },
+      {
+        name: "enableTareWeightHandling",
+        baseName: "enable_tare_weight_handling",
+        type: "number"
+      },
+      {
+        name: "notCheckStockFulfillmentForRecipes",
+        baseName: "not_check_stock_fulfillment_for_recipes",
+        type: "number"
+      },
+      {
+        name: "productGroupId",
+        baseName: "product_group_id",
+        type: "number"
+      },
+      {
+        name: "quFactorPurchaseToStock",
+        baseName: "qu_factor_purchase_to_stock",
+        type: "number"
+      },
+      {
+        name: "tareWeight",
+        baseName: "tare_weight",
+        type: "number"
+      },
+      {
+        name: "barcode",
+        baseName: "barcode",
+        type: "string"
+      },
+      {
+        name: "minStockAmount",
+        baseName: "min_stock_amount",
+        type: "number"
+      },
+      {
+        name: "defaultBestBeforeDays",
+        baseName: "default_best_before_days",
+        type: "number"
+      },
+      {
+        name: "defaultBestBeforeDaysAfterOpen",
+        baseName: "default_best_before_days_after_open",
+        type: "number"
+      },
+      {
+        name: "pictureFileName",
+        baseName: "picture_file_name",
+        type: "string"
+      },
+      {
+        name: "allowPartialUnitsInStock",
+        baseName: "allow_partial_units_in_stock",
+        type: "boolean"
+      },
+      {
+        name: "rowCreatedTimestamp",
+        baseName: "row_created_timestamp",
+        type: "Date"
+      }
+    ];
 
   static getAttributeTypeMap() {
     return Product.attributeTypeMap;
